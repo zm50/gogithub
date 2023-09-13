@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/exec"
 	"runtime"
 	"strings"
 	"time"
@@ -100,6 +101,15 @@ func updateSystemHosts(systemHostsPath, urlsPath, rawPath string) error {
 	err = os.WriteFile(systemHostsPath, []byte(res.String()), 0666)
 	if err != nil {
 		return errors.New("系统hosts文件 " + systemHostsPath + " 修改失败， 错误：" + err.Error())
+	}
+
+	switch runtime.GOOS {
+	case "linux":
+		info, err := exec.Command("bash", "-c", "/etc/init.d/networking restart").Output()
+		fmt.Println(string(info))
+		if err != nil {
+			return errors.New("DNS刷新失败, 错误：" + err.Error())
+		}
 	}
 
 	return err
