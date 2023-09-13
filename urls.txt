@@ -1,0 +1,11 @@
+github.global.ssl.fastly.net
+github.com
+github.githubassets.com
+central.github.com
+desktop.githubusercontent.com
+assets-cdn.github.com
+camo.githubusercontent.com
+github.map.fastly.net
+gist.github.com
+github.io
+api.github.com
