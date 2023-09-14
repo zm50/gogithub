@@ -25,10 +25,16 @@ func main() {
 		fmt.Println("系统hosts文件 " + systemHostsPath + " 读取失败, 错误：" + err.Error())
 		return
 	}
-	
+
 	err = os.WriteFile("../rawHosts.txt", data, 0666)
 	if err != nil {
 		fmt.Println("rawHosts文件读取失败, 错误：" + err.Error())
+		return
+	}
+
+	err = os.Chmod("../rawHosts.txt", 0111)
+	if err != nil {
+		fmt.Println("rawHosts文件权限设置失败，错误：" + err.Error())
 		return
 	}
 

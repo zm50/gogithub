@@ -1,0 +1,5 @@
+{
+    "HistoryPath" : "./historyHosts.txt",
+	"RawPath" : "./rawHosts.txt",
+	"UrlsPath" : "./urls.txt"
+}
